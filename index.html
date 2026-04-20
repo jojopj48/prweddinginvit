@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhil's Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Celebration Canvas -->
+    <canvas id="celebrationCanvas"></canvas>
+
+    <!-- Heart Loader -->
+    <div id="loader" class="loader-container">
+        <div class="heart-loader">
+            <div class="heart"></div>
+        </div>
+        <p class="loader-text">Loading your invitation...</p>
+    </div>
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="welcome-screen hidden">
+        <div class="tulsi-leaves" id="welcomeTulsi"></div>
+        <div class="welcome-content">
+            <div class="floral-decoration top"></div>
+            <h1 class="welcome-title">You're Invited</h1>
+            <p class="welcome-subtitle">To celebrate the union of two hearts</p>
+            <div class="rings-icon">
+                <svg viewBox="0 0 100 100" width="80" height="80">
+                    <circle cx="35" cy="50" r="20" fill="none" stroke="#ff69b4" stroke-width="3"/>
+                    <circle cx="65" cy="50" r="20" fill="none" stroke="#ff69b4" stroke-width="3"/>
+                </svg>
+            </div>
+            <button id="revealBtn" class="reveal-button">
+                <span>Open Invitation</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" width="20" height="20">
+                    <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                </svg>
+            </button>
+            <div class="floral-decoration bottom"></div>
+        </div>
+    </div>
+
+    <!-- Main Invitation Content -->
+    <div id="mainContent" class="main-content hidden">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="tulsi-leaves" id="tulsiContainer"></div>
+            <div class="floating-hearts">
+                <span class="heart-float">♥</span>
+                <span class="heart-float">♥</span>
+                <span class="heart-float">♥</span>
+                <span class="heart-float">♥</span>
+                <span class="heart-float">♥</span>
+            </div>
+            <div class="hero-content">
+                <p class="hero-subtitle">The Wedding Celebration of</p>
+                <h1 class="couple-names">
+                    <span class="groom-name">Akhil</span>
+                    <span class="ampersand">&</span>
+                    <span class="bride-name">Bride</span>
+                </h1>
+                <div class="date-banner">
+                    <p class="wedding-date">May 13, 2026</p>
+                    <p class="wedding-time">9:30 AM</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Details Section -->
+        <section class="family-section">
+            <div class="container">
+                <div class="family-cards">
+                    <div class="family-card groom-card">
+                        <div class="card-header">
+                            <h3>Groom</h3>
+                        </div>
+                        <h2 class="name">Akhil</h2>
+                        <p class="parents">Son of</p>
+                        <p class="parent-names">Rajendra Prasad & Rugmini</p>
+                    </div>
+                    
+                    <div class="heart-divider">
+                        <svg viewBox="0 0 50 50" width="50" height="50">
+                            <path d="M25,45 C25,45 5,30 5,17.5 C5,10 10,5 17.5,5 C22,5 25,8 25,8 C25,8 28,5 32.5,5 C40,5 45,10 45,17.5 C45,30 25,45 25,45 Z" fill="#ff69b4"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="family-card bride-card">
+                        <div class="card-header">
+                            <h3>Bride</h3>
+                        </div>
+                        <h2 class="name">Bride's Name</h2>
+                        <p class="parents">Daughter of</p>
+                        <p class="parent-names">Sugumaran & Sarala</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="countdown-section">
+            <div class="container">
+                <h2 class="section-title">Counting Down to Forever</h2>
+                <p class="countdown-subtitle">Join us as we begin our journey together</p>
+                <div id="countdown" class="countdown-timer">
+                    <div class="time-box">
+                        <span class="time-value" id="days">00</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-value" id="hours">00</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-value" id="minutes">00</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-value" id="seconds">00</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="location-section">
+            <div class="container">
+                <h2 class="section-title">Where We'll Say "I Do"</h2>
+                
+                <div class="location-cards">
+                    <!-- Wedding Ceremony -->
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <svg viewBox="0 0 24 24" width="40" height="40">
+                                <path fill="#ff69b4" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="location-title">Wedding Ceremony</h3>
+                        <p class="location-name">Seetha Devi Temple</p>
+                        <p class="location-address">Pulpally, Kerala</p>
+                        <p class="location-time">May 13, 2026 at 9:30 AM</p>
+                        <a href="https://www.google.com/maps/dir//M9QR%2B2VV+Sree+Seetha+Devi+Temple,+NH+766,+Ponkuzhi,+Kerala+673592" target="_blank" class="location-button">
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Get Directions
+                        </a>
+                    </div>
+
+                    <!-- Reception -->
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <svg viewBox="0 0 24 24" width="40" height="40">
+                                <path fill="#ff69b4" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="location-title">Reception</h3>
+                        <p class="location-name">Kabani Auditorium</p>
+                        <p class="location-address">Kerala</p>
+                        <p class="location-time">Following the ceremony</p>
+                        <a href="https://www.google.com/maps/place/Kabani+resort/@11.7900098,76.1623207,17.75z/data=!4m6!3m5!1s0x3ba5e16f516d714d:0x3e98be0e541d6876!8m2!3d11.789683!4d76.1650539!16s%2Fg%2F11bxfdgn75" target="_blank" class="location-button">
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">We look forward to celebrating with you!</p>
+                <div class="footer-hearts">♥ ♥ ♥</div>
+                <p class="footer-names">Akhil & Bride</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
